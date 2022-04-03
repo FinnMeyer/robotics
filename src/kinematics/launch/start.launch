@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="kinematics" type="kinematics_node" name="kinematics" output="screen">
+         <param name="kp"   value="5.0" type="double" />
+         <param name="ki"   value="0.5" type="double" />
+         <param name="kd"   value="0" type="double" />
+         <param name="v_T"   value="0.8" type="double" />
+         <param name="maxAntiWindup"   value="2" type="double" />
+         <param name="wantedSlip"   value="0.15" type="double" />
+    </node>
+
+
+</launch>

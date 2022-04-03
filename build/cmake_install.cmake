@@ -132,7 +132,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ubuntu/robotics/build/gtest/cmake_install.cmake")
   include("/home/ubuntu/robotics/build/callbacks/cmake_install.cmake")
-  include("/home/ubuntu/robotics/build/tf_examples/cmake_install.cmake")
+  include("/home/ubuntu/robotics/build/kinematics/cmake_install.cmake")
 
 endif()
 
