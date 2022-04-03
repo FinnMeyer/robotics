@@ -1,0 +1,8 @@
+\subsubsection usage Usage
+\verbatim
+<node name="pub" pkg="pub_sub" type="pub">
+  <param name="mode" type="bool" value="True" />
+  <param name="fmt" type="int" value="0" />
+</node>
+\endverbatim
+

@@ -1,0 +1,6 @@
+<launch>
+
+    <node pkg="callbacks" type="pub_callbacks" name="my_pub" />
+    <node pkg="callbacks" type="sub_callbacks_v1" name="my_sub_v1" output="screen" />
+
+</launch>
