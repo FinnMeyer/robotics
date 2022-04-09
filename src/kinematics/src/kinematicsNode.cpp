@@ -2,6 +2,7 @@
 # include <nav_msgs/Odometry.h>
 # include "kinematicsNode.h"
 # include "sensor_msgs/JointState.h"
+# include "geometry_msgs/TwistStamped.h"
 # include <math.h>
 #include <fstream>
 #include <iostream>
@@ -22,7 +23,7 @@
 kinematicsNode::kinematicsNode()
         : n_                       ()
         , nPriv_                   ("~")
-        //, controlPub_(n_.advertise<egn_messages::DVControlOutput>("dv_control_output", 1))
+        , Pub_(n_.advertise<geometry_msgs::TwistStamped>("/cmd_vel", 1000))
         , wheelDataSubscriber(n_.subscribe("/wheel_states", 1, &kinematicsNode::wheelDataCallback, this))
 
 {
@@ -54,6 +55,7 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         velocity[3] = msg.position[3] * R;
     }
     calculateRobot();
+    Publish();
 }
 
 void kinematicsNode::calculateRobot(){
@@ -62,34 +64,20 @@ void kinematicsNode::calculateRobot(){
         states[i] = 0.25 * A[i][j] * velocity[j];
         }
     }
-    std::cerr<< states[0] << std::endl;
 }
-   /*
-void kinematicsNode::PublishTorque(){
- 
-    egn_messages::DVControlOutput RecommendedkinematicserTorque;
-    RecommendedkinematicserTorque.header.frame_id = "world";
-    RecommendedkinematicserTorque.header.stamp = ros::Time::now();
-    RecommendedkinematicserTorque.steerAngleSetpoint = AngleSetpoint;
-    RecommendedkinematicserTorque.drsState = drsState;
-    RecommendedkinematicserTorque.disciplinFinished = skidpadFinished;
-    RecommendedkinematicserTorque.speedTarget = speedRef;
-    for (int i = 0; i < 4; i++) {
-        // < muss auch geändert werden
-        if(torqueSetpoint > torqueFromPid[i] && v_W[i] > 0 && v_R[i] > 0 && s_L[i] > 0 && torqueFromPid[i] > 0 && kinematicsActivation == true){
-            RecommendedkinematicserTorque.torqueSetpoint = torqueFromPid[0];
-            finalTorque[i] = torqueFromPid[0];
-        }
-        else if(torqueSetpoint < torqueFromPid[i] && v_W[i] > 0 && v_R[i] > 0 && s_L[i] < 0 && kinematicsBreaking == true){
-            RecommendedkinematicserTorque.torqueSetpoint = torqueFromPid[0];
-            finalTorque[i] = torqueFromPid[0];
-        }
-        else{
-            RecommendedkinematicserTorque.torqueSetpoint = torqueSetpoint;
-            finalTorque[i] = torqueSetpoint;
-        }
-    }
-    controlPub_.publish(RecommendedkinematicserTorque);
+void kinematicsNode::Publish(){
+    geometry_msgs::TwistStamped Kinematics;
+     
+    Kinematics.header.frame_id = "robot";
+    Kinematics.header.stamp = ros::Time::now();
+    Kinematics.twist.linear.x = states[0];
+    Kinematics.twist.linear.y = states[1];
+    Kinematics.twist.linear.z = 0;
+    Kinematics.twist.angular.x = 0;
+    Kinematics.twist.angular.y = 0;
+    Kinematics.twist.angular.z = states[2];
+    Pub_.publish(Kinematics);
+     
   
 }
-  */
+ 
