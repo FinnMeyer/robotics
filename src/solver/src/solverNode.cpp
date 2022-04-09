@@ -21,7 +21,7 @@ solverNode::solverNode()
         : n_                       ()
         , nPriv_                   ("~")
         , Pub_(n_.advertise<nav_msgs::Odometry>("/odom", 1000))
-        , wheelDataSubscriber(n_.subscribe("/cmd_vel", 1, &solverNode::wheelDataCallback, this))
+        , wheelDataSubscriber(n_.subscribe("/cmd_vel", 1, &solverNode::odometryCallback, this))
 
 {
     //odometrySub_ = n_.subscribe("/odometry", 1, &solverNode::odometryCallback, this);
@@ -37,7 +37,7 @@ solverNode::~solverNode(){
  * General information: Notes regarding the variables can be found at the declaration in the solverNode.h file
  ****************************/
 
-void solverNode::odometryCallback(sensor_msgs::JointState msg){
+void solverNode::odometryCallback(geometry_msgs::TwistStamped msg){
     v_x = msg.twist.linear.x;
     v_y = msg.twist.linear.y;
     yawrate = msg.twist.angular.z;
@@ -46,13 +46,13 @@ void solverNode::odometryCallback(sensor_msgs::JointState msg){
     Publish();
 }
 
-void solverNode::calculateEuler(double delta){
+void solverNode::calculateEuler(){
     yaw = yaw_old + delta * yawrate;
     x = x_old + delta * (v_x * cos(yaw) + sin(yaw) * v_y);
     y = y_old + delta * (v_x * sin(yaw) + cos(yaw) * v_y);
     
 }
-void callback(){
+void solverNode::callback(){
     // set header
     transformStamped.header.stamp = ros::Time::now();
     transformStamped.header.frame_id = "world";
