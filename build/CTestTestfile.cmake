@@ -7,3 +7,4 @@
 subdirs("gtest")
 subdirs("callbacks")
 subdirs("kinematics")
+subdirs("solver")

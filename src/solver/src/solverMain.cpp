@@ -6,6 +6,12 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "solver");
     solverNode solver;
-    ros::spin();
+    ros::Rate r(200);
+    while (ros::ok())
+    {
+    solver.calculateEuler();
+    ros::spinOnce();
+    r.sleep();
+    }
     return EXIT_SUCCESS;
 }

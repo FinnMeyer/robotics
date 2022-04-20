@@ -20,13 +20,12 @@ private:
     double R = 0.07;
     double l = 0.2;
     double w = 0.169;
-    bool ticks = true;
+    bool ticks = false;
     double velocity[4];
     double states[3];
     double A [3][4] =  {{1, 1, 1, 1},
-                        {1, -1, 1, -1},
-                        {1/(l + w), -1/(l + w), -1/(l + w), 1/(l + w)},
-                        };
+                        {-1, 1, 1, -1},
+                        {-1/(l + w), 1/(l + w), -1/(l + w), 1/(l + w)}};
 
 
 public:

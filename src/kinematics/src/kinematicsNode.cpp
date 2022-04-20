@@ -43,27 +43,37 @@ kinematicsNode::~kinematicsNode(){
 
 void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
     if(ticks == true){
-        velocity[0] = msg.velocity[0];
-        velocity[1] = msg.velocity[1];
-        velocity[2] = msg.velocity[2];
-        velocity[3] = msg.velocity[3];
+        //needs to be velocity (new-old position)
+        velocity[0] = msg.position[0];
+        velocity[1] = msg.position[1];
+        velocity[2] = msg.position[2];
+        velocity[3] = msg.position[3];
     }
     else{
-        velocity[0] = msg.position[0] * R;
-        velocity[1] = msg.position[1] * R;
-        velocity[2] = msg.position[2] * R;
-        velocity[3] = msg.position[3] * R;
+        velocity[0] = msg.velocity[0] * R / 60 * 2 * M_PI;
+        velocity[1] = msg.velocity[1] * R  / 60 * 2 * M_PI;
+        velocity[2] = msg.velocity[2] * R  / 60 * 2 * M_PI;
+        velocity[3] = msg.velocity[3] * R  / 60 * 2 * M_PI;
+        std::cerr<< velocity[0] <<std::endl;
+        std::cerr<< velocity[1] <<std::endl;
+        std::cerr<< velocity[2] <<std::endl;
+        std::cerr<< velocity[3] <<std::endl;
+        std::cerr<< "" <<std::endl;
     }
     calculateRobot();
     Publish();
 }
 
 void kinematicsNode::calculateRobot(){
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 5; j++){
-        states[i] = 0.25 * A[i][j] * velocity[j];
+    for(int i = 0; i < 3; i++){
+        states[i] = 0;
+        for(int j = 0; j < 4; j++){
+        states[i] += 0.25 * A[i][j] * velocity[j];
         }
     }
+    std::cerr<< states[0] <<std::endl;
+    std::cerr<< states[1] <<std::endl;
+    std::cerr<< states[2] <<std::endl;
 }
 void kinematicsNode::Publish(){
     geometry_msgs::TwistStamped Kinematics;

@@ -19,11 +19,11 @@ private:
     ros::Publisher Pub_;
     void odometryCallback(geometry_msgs::TwistStamped msg);
     void Publish();
-    void calculateEuler();
     void callback();
 public:
     solverNode();
     ~solverNode();
+    void calculateEuler();
     double x = 0;
     double y = 0;
     double yaw = 0;
@@ -33,7 +33,8 @@ public:
     double x_old = 0;
     double y_old = 0;
     double yaw_old = 0;
-    double delta;
+    double delta = 1.0 / 200.0;
+    bool start = false;
 };
 
 

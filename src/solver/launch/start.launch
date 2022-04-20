@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-    <node pkg="kinematics" type="kinematics_node" name="kinematics" output="screen">
+    <node pkg="solver" type="solver_node" name="solver" output="screen">
          <param name="kp"   value="5.0" type="double" />
          <param name="ki"   value="0.5" type="double" />
          <param name="kd"   value="0" type="double" />

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find solver)/launch/start.launch" />
+    <include file="$(find kinematics)/launch/start.launch" />
+</launch>

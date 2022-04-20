@@ -8,6 +8,7 @@ kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/mel
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
+kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistStamped.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/nav_msgs/Odometry.h
@@ -79,6 +80,7 @@ kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/mel
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
+kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistStamped.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/nav_msgs/Odometry.h

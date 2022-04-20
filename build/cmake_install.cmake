@@ -133,6 +133,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ubuntu/robotics/build/gtest/cmake_install.cmake")
   include("/home/ubuntu/robotics/build/callbacks/cmake_install.cmake")
   include("/home/ubuntu/robotics/build/kinematics/cmake_install.cmake")
+  include("/home/ubuntu/robotics/build/solver/cmake_install.cmake")
 
 endif()
 

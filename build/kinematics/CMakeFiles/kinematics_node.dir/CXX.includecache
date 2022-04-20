@@ -23,6 +23,8 @@ kinematicsNode.h
 /home/ubuntu/robotics/src/kinematics/src/kinematicsNode.h
 sensor_msgs/JointState.h
 /home/ubuntu/robotics/src/kinematics/src/sensor_msgs/JointState.h
+geometry_msgs/TwistStamped.h
+/home/ubuntu/robotics/src/kinematics/src/geometry_msgs/TwistStamped.h
 math.h
 -
 fstream
@@ -37,6 +39,8 @@ nav_msgs/Odometry.h
 -
 sensor_msgs/JointState.h
 /home/ubuntu/robotics/src/kinematics/src/sensor_msgs/JointState.h
+geometry_msgs/TwistStamped.h
+/home/ubuntu/robotics/src/kinematics/src/geometry_msgs/TwistStamped.h
 fstream
 -
 iostream
@@ -130,6 +134,26 @@ ros/message_operations.h
 geometry_msgs/Vector3.h
 -
 geometry_msgs/Vector3.h
+-
+
+/opt/ros/melodic/include/geometry_msgs/TwistStamped.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Twist.h
 -
 
 /opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h

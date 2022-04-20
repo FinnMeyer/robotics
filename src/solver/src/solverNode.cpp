@@ -41,16 +41,19 @@ void solverNode::odometryCallback(geometry_msgs::TwistStamped msg){
     v_x = msg.twist.linear.x;
     v_y = msg.twist.linear.y;
     yawrate = msg.twist.angular.z;
-    calculateEuler();
-    callback();
-    Publish();
+    start = true;
 }
 
 void solverNode::calculateEuler(){
+    if(start == true){
     yaw = yaw_old + delta * yawrate;
-    x = x_old + delta * (v_x * cos(yaw) + sin(yaw) * v_y);
+    x = x_old + delta * (v_x * cos(yaw) - sin(yaw) * v_y);
     y = y_old + delta * (v_x * sin(yaw) + cos(yaw) * v_y);
-    
+    yaw_old = yaw;
+    x_old = x;
+    y_old = y;
+    Publish();
+    }
 }
 void solverNode::callback(){
     // set header
@@ -72,15 +75,17 @@ void solverNode::callback(){
     br.sendTransform(transformStamped);
 }
 void solverNode::Publish(){
-    /* from kinematics
     nav_msgs::Odometry solver;
-     
+    tf2::Quaternion q;
+    q.setRPY(0, 0, yaw);
     solver.header.frame_id = "world";
     solver.header.stamp = ros::Time::now();
-    solver.twist.linear.x = states[0];
-    solver.twist.linear.y = states[1];
-    solver.twist.angular.z = states[2];
+    solver.pose.pose.position.x = x;
+    solver.pose.pose.position.y = y;
+    solver.pose.pose.orientation.x = q.x();
+    solver.pose.pose.orientation.y = q.y();
+    solver.pose.pose.orientation.z = q.z();
+    solver.pose.pose.orientation.w = q.w();
     Pub_.publish(solver);
-    */
 }
  

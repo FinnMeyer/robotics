@@ -1,2 +1,2 @@
-callbacks:kinematics
+callbacks:kinematics:solver
 -DCATKIN_DEVEL_PREFIX=/home/ubuntu/robotics/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/robotics/install -G Unix Makefiles
