@@ -3,6 +3,7 @@
 # include "kinematicsNode.h"
 # include "sensor_msgs/JointState.h"
 # include "geometry_msgs/TwistStamped.h"
+#include <kinematics/wheels_rpm.h>
 # include <math.h>
 #include <fstream>
 #include <iostream>
@@ -24,7 +25,9 @@ kinematicsNode::kinematicsNode()
         : n_                       ()
         , nPriv_                   ("~")
         , Pub_(n_.advertise<geometry_msgs::TwistStamped>("/cmd_vel", 1000))
+        , PubRPM_(n_.advertise<kinematics::wheels_rpm>("/wheels_rpm", 1000))
         , wheelDataSubscriber(n_.subscribe("/wheel_states", 1, &kinematicsNode::wheelDataCallback, this))
+        , CmdSubscriber(n_.subscribe("/cmd_vel", 1, &kinematicsNode::calculateInverseRobot, this))
 
 {
     //odometrySub_ = n_.subscribe("/odometry", 1, &kinematicsNode::odometryCallback, this);
@@ -43,23 +46,31 @@ kinematicsNode::~kinematicsNode(){
 
 void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
     if(ticks == true){
-        //needs to be velocity (new-old position)
-        velocity[0] = msg.position[0];
-        velocity[1] = msg.position[1];
-        velocity[2] = msg.position[2];
-        velocity[3] = msg.position[3];
+        velocity[0] = (msg.position[0] - oldposition[0]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
+        velocity[1] = (msg.position[1] - oldposition[1]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
+        velocity[2] = (msg.position[2] - oldposition[2]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
+        velocity[3] = (msg.position[3] - oldposition[3]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
+        if(start == false){
+            for(int i = 0; i < 4; i++){
+                velocity[i] = 0;
+            }   
+        }
+        for(int i = 0; i < 4; i++){
+            oldposition[i] = msg.position[i];
+        }   
+        std::cerr<< (msg.header.stamp.nsec - oldStamp)  / 1000000000<<std::endl;
+        oldStamp = msg.header.stamp.nsec;
+        start = true;
     }
     else{
-        velocity[0] = msg.velocity[0] * R / 60 * 2 * M_PI;
-        velocity[1] = msg.velocity[1] * R  / 60 * 2 * M_PI;
-        velocity[2] = msg.velocity[2] * R  / 60 * 2 * M_PI;
-        velocity[3] = msg.velocity[3] * R  / 60 * 2 * M_PI;
-        std::cerr<< velocity[0] <<std::endl;
-        std::cerr<< velocity[1] <<std::endl;
-        std::cerr<< velocity[2] <<std::endl;
-        std::cerr<< velocity[3] <<std::endl;
-        std::cerr<< "" <<std::endl;
+        velocity[0] = msg.velocity[0] * R / 60 / 5;
+        velocity[1] = msg.velocity[1] * R / 60 / 5;
+        velocity[2] = msg.velocity[2] * R / 60 / 5;
+        velocity[3] = msg.velocity[3] * R / 60 / 5;
     }
+    
+    std::cerr<< velocity[0] <<std::endl;
+    std::cerr<< "" <<std::endl;
     calculateRobot();
     Publish();
 }
@@ -71,10 +82,22 @@ void kinematicsNode::calculateRobot(){
         states[i] += 0.25 * A[i][j] * velocity[j];
         }
     }
-    std::cerr<< states[0] <<std::endl;
-    std::cerr<< states[1] <<std::endl;
-    std::cerr<< states[2] <<std::endl;
 }
+
+void kinematicsNode::calculateInverseRobot(geometry_msgs::TwistStamped msg){
+    VCog[0] = msg.twist.linear.x;
+    VCog[1] = msg.twist.linear.y;
+    VCog[2] = msg.twist.angular.z;
+    for(int i = 0; i < 4; i++){
+        vwheel[i] = 0;
+        for(int j = 0; j < 3; j++){
+        vwheel[i] += A[i][j] * VCog[j];
+        }
+        rpm[i] = vwheel[i] / R * 60 * 5;
+    }
+    PublishRPM();
+}
+
 void kinematicsNode::Publish(){
     geometry_msgs::TwistStamped Kinematics;
      
@@ -86,8 +109,17 @@ void kinematicsNode::Publish(){
     Kinematics.twist.angular.x = 0;
     Kinematics.twist.angular.y = 0;
     Kinematics.twist.angular.z = states[2];
-    Pub_.publish(Kinematics);
+    Pub_.publish(Kinematics);  
+}
+
+void kinematicsNode::PublishRPM(){
+    kinematics::wheels_rpm Rpm;
      
-  
+    Rpm.header.frame_id = "robot";
+    Rpm.rpm_fl = rpm[0];
+    Rpm.rpm_fr = rpm[1];
+    Rpm.rpm_rl = rpm[2];
+    Rpm.rpm_rr = rpm[3];
+    PubRPM_.publish(Rpm);  
 }
  

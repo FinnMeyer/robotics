@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     ros::Rate r(200);
     while (ros::ok())
     {
-    solver.calculateEuler();
+    solver.solver();
     ros::spinOnce();
     r.sleep();
     }

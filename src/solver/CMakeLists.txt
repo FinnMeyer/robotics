@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(solver)
 
 ## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs tf2_ros)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs tf2_ros message_generation)
 
 ## Declare a catkin package
 catkin_package()

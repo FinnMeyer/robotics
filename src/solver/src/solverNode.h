@@ -20,13 +20,17 @@ private:
     void odometryCallback(geometry_msgs::TwistStamped msg);
     void Publish();
     void callback();
+    void calculateEuler();
+    void calculateRK();
 public:
     solverNode();
     ~solverNode();
-    void calculateEuler();
+    void solver();
     double x = 0;
     double y = 0;
     double yaw = 0;
+    double yawHalf = 0;
+    bool euler = false;
     double v_x;
     double v_y;
     double yawrate;

@@ -2,12 +2,10 @@
 <launch>
 
     <node pkg="solver" type="solver_node" name="solver" output="screen">
-         <param name="kp"   value="5.0" type="double" />
-         <param name="ki"   value="0.5" type="double" />
-         <param name="kd"   value="0" type="double" />
-         <param name="v_T"   value="0.8" type="double" />
-         <param name="maxAntiWindup"   value="2" type="double" />
-         <param name="wantedSlip"   value="0.15" type="double" />
+         <param name="x"   value="0.0" type="double" />
+         <param name="y"   value="0.0" type="double" />
+         <param name="yaw"   value="0.0" type="double" />
+         
     </node>
 
 

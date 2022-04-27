@@ -27,7 +27,9 @@ solverNode::solverNode()
     //odometrySub_ = n_.subscribe("/odometry", 1, &solverNode::odometryCallback, this);
     //carSensorsSub_ = n_.subscribe("/car_sensors", 1, &solverNode::carSensorsCallback, this);
 
-    // n_.getParam("/solver/kp", kp);
+    n_.getParam("/solver/x", x);
+    n_.getParam("/solver/y", y);
+    n_.getParam("/solver/yaw", yaw);
 }
 
 solverNode::~solverNode(){
@@ -43,7 +45,17 @@ void solverNode::odometryCallback(geometry_msgs::TwistStamped msg){
     yawrate = msg.twist.angular.z;
     start = true;
 }
+void solverNode::solver(){
+    if(euler == true){
+        calculateEuler();
+    }
+    else{
+        calculateRK();
+    }
+    callback();
+    Publish();
 
+}
 void solverNode::calculateEuler(){
     if(start == true){
     yaw = yaw_old + delta * yawrate;
@@ -52,14 +64,26 @@ void solverNode::calculateEuler(){
     yaw_old = yaw;
     x_old = x;
     y_old = y;
-    Publish();
     }
 }
+void solverNode::calculateRK(){
+    if(start == true){
+    yaw = yaw_old + delta * yawrate;
+    yawHalf = yaw_old + (delta / 2 * yawrate);
+    x = x_old + delta * (v_x * cos(yawHalf) - sin(yawHalf) * v_y);
+    y = y_old + delta * (v_x * sin(yawHalf) + cos(yawHalf) * v_y);
+
+    yaw_old = yaw;
+    x_old = x;
+    y_old = y;
+    }
+}
+
 void solverNode::callback(){
     // set header
     transformStamped.header.stamp = ros::Time::now();
     transformStamped.header.frame_id = "world";
-    transformStamped.child_frame_id = "robot";
+    transformStamped.child_frame_id = "base_link";
     // set x,y
     transformStamped.transform.translation.x = x;
     transformStamped.transform.translation.y = y;
