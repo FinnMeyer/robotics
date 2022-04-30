@@ -987,19 +987,6 @@ solver_generate_messages_eus/fast:
 .PHONY : solver_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named solver_gencfg
-
-# Build rule for target.
-solver_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 solver_gencfg
-.PHONY : solver_gencfg
-
-# fast build rule for target.
-solver_gencfg/fast:
-	$(MAKE) -f solver/CMakeFiles/solver_gencfg.dir/build.make solver/CMakeFiles/solver_gencfg.dir/build
-.PHONY : solver_gencfg/fast
-
-#=============================================================================
 # Target rules for targets named actionlib_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -1322,7 +1309,6 @@ help:
 	@echo "... solver_node"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... solver_generate_messages_eus"
-	@echo "... solver_gencfg"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_nodejs"

@@ -108,7 +108,6 @@
 /home/ubuntu/robotics/build/solver/CMakeFiles/solver_node.dir
 /home/ubuntu/robotics/build/solver/CMakeFiles/tf2_msgs_generate_messages_cpp.dir
 /home/ubuntu/robotics/build/solver/CMakeFiles/solver_generate_messages_eus.dir
-/home/ubuntu/robotics/build/solver/CMakeFiles/solver_gencfg.dir
 /home/ubuntu/robotics/build/solver/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir
 /home/ubuntu/robotics/build/solver/CMakeFiles/actionlib_generate_messages_lisp.dir
 /home/ubuntu/robotics/build/solver/CMakeFiles/test.dir

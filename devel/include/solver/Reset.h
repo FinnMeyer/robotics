@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::solver::Reset > {
   static const char* value()
   {
-    return "b60021db68ddc3303a9e21fb2914173c";
+    return "1d0483a5373f8cadf48c1a80ae178886";
   }
 
   static const char* value(const ::solver::Reset&) { return value(); }

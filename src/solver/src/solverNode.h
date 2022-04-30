@@ -23,8 +23,6 @@ private:
     void callback();
     void calculateEuler();
     void calculateRK();
-    bool reset(int *count, solver::Reset::Request  &req, 
-                    solver::Reset::Response &res);
 public:
     solverNode();
     ~solverNode();

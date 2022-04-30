@@ -20,114 +20,118 @@
 
 (defclass solver::ResetRequest
   :super ros::object
-  :slots (_new_count ))
+  :slots (_x _y _yaw ))
 
 (defmethod solver::ResetRequest
   (:init
    (&key
-    ((:new_count __new_count) 0)
+    ((:x __x) 0.0)
+    ((:y __y) 0.0)
+    ((:yaw __yaw) 0.0)
     )
    (send-super :init)
-   (setq _new_count (round __new_count))
+   (setq _x (float __x))
+   (setq _y (float __y))
+   (setq _yaw (float __yaw))
    self)
-  (:new_count
-   (&optional __new_count)
-   (if __new_count (setq _new_count __new_count)) _new_count)
+  (:x
+   (&optional __x)
+   (if __x (setq _x __x)) _x)
+  (:y
+   (&optional __y)
+   (if __y (setq _y __y)) _y)
+  (:yaw
+   (&optional __yaw)
+   (if __yaw (setq _yaw __yaw)) _yaw)
   (:serialization-length
    ()
    (+
-    ;; int64 _new_count
-    8
+    ;; float32 _x
+    4
+    ;; float32 _y
+    4
+    ;; float32 _yaw
+    4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int64 _new_count
-#+(or :alpha :irix6 :x86_64)
-       (progn (sys::poke _new_count (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
-#-(or :alpha :irix6 :x86_64)
-       (cond ((and (class _new_count) (= (length (_new_count . bv)) 2)) ;; bignum
-              (write-long (ash (elt (_new_count . bv) 0) 0) s)
-              (write-long (ash (elt (_new_count . bv) 1) -1) s))
-             ((and (class _new_count) (= (length (_new_count . bv)) 1)) ;; big1
-              (write-long (elt (_new_count . bv) 0) s)
-              (write-long (if (>= _new_count 0) 0 #xffffffff) s))
-             (t                                         ;; integer
-              (write-long _new_count s)(write-long (if (>= _new_count 0) 0 #xffffffff) s)))
+     ;; float32 _x
+       (sys::poke _x (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _y
+       (sys::poke _y (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _yaw
+       (sys::poke _yaw (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int64 _new_count
-#+(or :alpha :irix6 :x86_64)
-      (setf _new_count (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
-#-(or :alpha :irix6 :x86_64)
-      (setf _new_count (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
-                  (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
-              (cond ((= b1 -1) b0)
-                     ((and (= b1  0)
-                           (<= lisp::most-negative-fixnum b0 lisp::most-positive-fixnum))
-                      b0)
-                    ((= b1  0) (make-instance bignum :size 1 :bv (integer-vector b0)))
-                    (t (make-instance bignum :size 2 :bv (integer-vector b0 (ash b1 1)))))))
+   ;; float32 _x
+     (setq _x (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _y
+     (setq _y (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _yaw
+     (setq _yaw (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
 (defclass solver::ResetResponse
   :super ros::object
-  :slots (_old_count ))
+  :slots (_old_x _old_y _old_yaw ))
 
 (defmethod solver::ResetResponse
   (:init
    (&key
-    ((:old_count __old_count) 0)
+    ((:old_x __old_x) 0.0)
+    ((:old_y __old_y) 0.0)
+    ((:old_yaw __old_yaw) 0.0)
     )
    (send-super :init)
-   (setq _old_count (round __old_count))
+   (setq _old_x (float __old_x))
+   (setq _old_y (float __old_y))
+   (setq _old_yaw (float __old_yaw))
    self)
-  (:old_count
-   (&optional __old_count)
-   (if __old_count (setq _old_count __old_count)) _old_count)
+  (:old_x
+   (&optional __old_x)
+   (if __old_x (setq _old_x __old_x)) _old_x)
+  (:old_y
+   (&optional __old_y)
+   (if __old_y (setq _old_y __old_y)) _old_y)
+  (:old_yaw
+   (&optional __old_yaw)
+   (if __old_yaw (setq _old_yaw __old_yaw)) _old_yaw)
   (:serialization-length
    ()
    (+
-    ;; int64 _old_count
-    8
+    ;; float32 _old_x
+    4
+    ;; float32 _old_y
+    4
+    ;; float32 _old_yaw
+    4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int64 _old_count
-#+(or :alpha :irix6 :x86_64)
-       (progn (sys::poke _old_count (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
-#-(or :alpha :irix6 :x86_64)
-       (cond ((and (class _old_count) (= (length (_old_count . bv)) 2)) ;; bignum
-              (write-long (ash (elt (_old_count . bv) 0) 0) s)
-              (write-long (ash (elt (_old_count . bv) 1) -1) s))
-             ((and (class _old_count) (= (length (_old_count . bv)) 1)) ;; big1
-              (write-long (elt (_old_count . bv) 0) s)
-              (write-long (if (>= _old_count 0) 0 #xffffffff) s))
-             (t                                         ;; integer
-              (write-long _old_count s)(write-long (if (>= _old_count 0) 0 #xffffffff) s)))
+     ;; float32 _old_x
+       (sys::poke _old_x (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _old_y
+       (sys::poke _old_y (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _old_yaw
+       (sys::poke _old_yaw (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int64 _old_count
-#+(or :alpha :irix6 :x86_64)
-      (setf _old_count (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
-#-(or :alpha :irix6 :x86_64)
-      (setf _old_count (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
-                  (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
-              (cond ((= b1 -1) b0)
-                     ((and (= b1  0)
-                           (<= lisp::most-negative-fixnum b0 lisp::most-positive-fixnum))
-                      b0)
-                    ((= b1  0) (make-instance bignum :size 1 :bv (integer-vector b0)))
-                    (t (make-instance bignum :size 2 :bv (integer-vector b0 (ash b1 1)))))))
+   ;; float32 _old_x
+     (setq _old_x (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _old_y
+     (setq _old_y (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _old_yaw
+     (setq _old_yaw (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
@@ -136,7 +140,7 @@
   :super ros::object
   :slots ())
 
-(setf (get solver::Reset :md5sum-) "b60021db68ddc3303a9e21fb2914173c")
+(setf (get solver::Reset :md5sum-) "1d0483a5373f8cadf48c1a80ae178886")
 (setf (get solver::Reset :datatype-) "solver/Reset")
 (setf (get solver::Reset :request) solver::ResetRequest)
 (setf (get solver::Reset :response) solver::ResetResponse)
@@ -144,24 +148,32 @@
 (defmethod solver::ResetRequest
   (:response () (instance solver::ResetResponse :init)))
 
-(setf (get solver::ResetRequest :md5sum-) "b60021db68ddc3303a9e21fb2914173c")
+(setf (get solver::ResetRequest :md5sum-) "1d0483a5373f8cadf48c1a80ae178886")
 (setf (get solver::ResetRequest :datatype-) "solver/ResetRequest")
 (setf (get solver::ResetRequest :definition-)
-      "int64 new_count
+      "float32 x
+float32 y
+float32 yaw
 ---
-int64 old_count
+float32 old_x
+float32 old_y
+float32 old_yaw
 ")
 
-(setf (get solver::ResetResponse :md5sum-) "b60021db68ddc3303a9e21fb2914173c")
+(setf (get solver::ResetResponse :md5sum-) "1d0483a5373f8cadf48c1a80ae178886")
 (setf (get solver::ResetResponse :datatype-) "solver/ResetResponse")
 (setf (get solver::ResetResponse :definition-)
-      "int64 new_count
+      "float32 x
+float32 y
+float32 yaw
 ---
-int64 old_count
+float32 old_x
+float32 old_y
+float32 old_yaw
 ")
 
 
 
-(provide :solver/Reset "b60021db68ddc3303a9e21fb2914173c")
+(provide :solver/Reset "1d0483a5373f8cadf48c1a80ae178886")
 
 

@@ -8,11 +8,6 @@ generate_messages(
    DEPENDENCIES
    std_msgs
  )
-
- generate_dynamic_reconfigure_options(
-    cfg/parameters.cfg
-    
-)
 ## Declare a catkin package
 catkin_package()
 
@@ -27,5 +22,7 @@ target_link_libraries(solver_node ${catkin_LIBRARIES})
 
 add_executable(client src/client.cpp)
 add_dependencies(client ${catkin_EXPORTED_TARGETS})
+
 target_link_libraries(client ${catkin_LIBRARIES})
+
 

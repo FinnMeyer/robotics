@@ -5,24 +5,8 @@ solver/CMakeFiles/solver_node.dir/src/solverMain.cpp.o
  /home/ubuntu/robotics/devel/include/solver/Reset.h
  /home/ubuntu/robotics/devel/include/solver/ResetRequest.h
  /home/ubuntu/robotics/devel/include/solver/ResetResponse.h
- /home/ubuntu/robotics/devel/include/solver/parametersConfig.h
  /home/ubuntu/robotics/src/solver/src/solverMain.cpp
  /home/ubuntu/robotics/src/solver/src/solverNode.h
- /opt/ros/melodic/include/dynamic_reconfigure/BoolParameter.h
- /opt/ros/melodic/include/dynamic_reconfigure/Config.h
- /opt/ros/melodic/include/dynamic_reconfigure/ConfigDescription.h
- /opt/ros/melodic/include/dynamic_reconfigure/DoubleParameter.h
- /opt/ros/melodic/include/dynamic_reconfigure/Group.h
- /opt/ros/melodic/include/dynamic_reconfigure/GroupState.h
- /opt/ros/melodic/include/dynamic_reconfigure/IntParameter.h
- /opt/ros/melodic/include/dynamic_reconfigure/ParamDescription.h
- /opt/ros/melodic/include/dynamic_reconfigure/Reconfigure.h
- /opt/ros/melodic/include/dynamic_reconfigure/ReconfigureRequest.h
- /opt/ros/melodic/include/dynamic_reconfigure/ReconfigureResponse.h
- /opt/ros/melodic/include/dynamic_reconfigure/StrParameter.h
- /opt/ros/melodic/include/dynamic_reconfigure/config_init_mutex.h
- /opt/ros/melodic/include/dynamic_reconfigure/config_tools.h
- /opt/ros/melodic/include/dynamic_reconfigure/server.h
  /opt/ros/melodic/include/geometry_msgs/Point.h
  /opt/ros/melodic/include/geometry_msgs/Pose.h
  /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h

@@ -14,10 +14,10 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<solver::Reset>("reset");
   solver::Reset srv;
-  srv.request.new_count = 1;
+  srv.request.x = 1;
   if (client.call(srv))
   {
-    ROS_INFO("Old count: %ld", (long int)srv.response.old_count);
+    ROS_INFO("Old count: %ld", (long int)srv.response.old_x);
   }
   else
   {

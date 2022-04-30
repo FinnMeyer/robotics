@@ -24,17 +24,27 @@ struct ResetRequest_
   typedef ResetRequest_<ContainerAllocator> Type;
 
   ResetRequest_()
-    : new_count(0)  {
+    : x(0.0)
+    , y(0.0)
+    , yaw(0.0)  {
     }
   ResetRequest_(const ContainerAllocator& _alloc)
-    : new_count(0)  {
+    : x(0.0)
+    , y(0.0)
+    , yaw(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int64_t _new_count_type;
-  _new_count_type new_count;
+   typedef float _x_type;
+  _x_type x;
+
+   typedef float _y_type;
+  _y_type y;
+
+   typedef float _yaw_type;
+  _yaw_type yaw;
 
 
 
@@ -65,7 +75,9 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::solver::ResetRequest_<ContainerAllocator1> & lhs, const ::solver::ResetRequest_<ContainerAllocator2> & rhs)
 {
-  return lhs.new_count == rhs.new_count;
+  return lhs.x == rhs.x &&
+    lhs.y == rhs.y &&
+    lhs.yaw == rhs.yaw;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -122,12 +134,12 @@ struct MD5Sum< ::solver::ResetRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "9d4a4f279878d5dcb73fce49c1644609";
+    return "47802147045815b06859cca542c21d31";
   }
 
   static const char* value(const ::solver::ResetRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x9d4a4f279878d5dcULL;
-  static const uint64_t static_value2 = 0xb73fce49c1644609ULL;
+  static const uint64_t static_value1 = 0x47802147045815b0ULL;
+  static const uint64_t static_value2 = 0x6859cca542c21d31ULL;
 };
 
 template<class ContainerAllocator>
@@ -146,7 +158,9 @@ struct Definition< ::solver::ResetRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int64 new_count\n"
+    return "float32 x\n"
+"float32 y\n"
+"float32 yaw\n"
 ;
   }
 
@@ -165,7 +179,9 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.new_count);
+      stream.next(m.x);
+      stream.next(m.y);
+      stream.next(m.yaw);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -184,8 +200,12 @@ struct Printer< ::solver::ResetRequest_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::solver::ResetRequest_<ContainerAllocator>& v)
   {
-    s << indent << "new_count: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.new_count);
+    s << indent << "x: ";
+    Printer<float>::stream(s, indent + "  ", v.x);
+    s << indent << "y: ";
+    Printer<float>::stream(s, indent + "  ", v.y);
+    s << indent << "yaw: ";
+    Printer<float>::stream(s, indent + "  ", v.yaw);
   }
 };
 
