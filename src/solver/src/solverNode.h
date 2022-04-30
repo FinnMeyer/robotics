@@ -8,6 +8,7 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include <fstream>
 #include <iostream>
+#include "solver/Reset.h"
 class solverNode
 {
 private:
@@ -22,6 +23,8 @@ private:
     void callback();
     void calculateEuler();
     void calculateRK();
+    bool reset(int *count, solver::Reset::Request  &req, 
+                    solver::Reset::Response &res);
 public:
     solverNode();
     ~solverNode();

@@ -5,6 +5,7 @@
 # include "geometry_msgs/TwistStamped.h"
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
+#include "solver/Reset.h"
 
 //using namespace std;
 /****************************
@@ -26,7 +27,6 @@ solverNode::solverNode()
 {
     //odometrySub_ = n_.subscribe("/odometry", 1, &solverNode::odometryCallback, this);
     //carSensorsSub_ = n_.subscribe("/car_sensors", 1, &solverNode::carSensorsCallback, this);
-
     n_.getParam("/solver/x", x);
     n_.getParam("/solver/y", y);
     n_.getParam("/solver/yaw", yaw);

@@ -1,0 +1,7 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~mode" : \b [bool] Mode  min: False, default: True, max: True
+- \b "~fmt" : \b [int] Format of count min: 0, default: 0, max: 3
+

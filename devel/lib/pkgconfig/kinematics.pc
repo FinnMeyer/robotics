@@ -3,6 +3,6 @@ prefix=/home/ubuntu/robotics/devel
 Name: kinematics
 Description: Description of kinematics
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/ubuntu/robotics/devel/include
 Libs: -L${prefix}/lib 
 Requires: 

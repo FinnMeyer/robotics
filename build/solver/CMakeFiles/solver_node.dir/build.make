@@ -128,6 +128,7 @@ solver_node_EXTERNAL_OBJECTS =
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/libxmlrpcpp.so
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/libtf2.so
+/home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/librostime.so
 /home/ubuntu/robotics/devel/lib/solver/solver_node: /opt/ros/melodic/lib/libcpp_common.so

@@ -3,6 +3,6 @@ prefix=/home/ubuntu/robotics/install
 Name: kinematics
 Description: Description of kinematics
 Version: 0.0.0
-Cflags: 
+Cflags: -I${prefix}/include
 Libs: -L${prefix}/lib 
 Requires: 

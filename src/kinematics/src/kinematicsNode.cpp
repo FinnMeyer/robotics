@@ -58,7 +58,6 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         for(int i = 0; i < 4; i++){
             oldposition[i] = msg.position[i];
         }   
-        std::cerr<< (msg.header.stamp.nsec - oldStamp)  / 1000000000<<std::endl;
         oldStamp = msg.header.stamp.nsec;
         start = true;
     }
@@ -68,9 +67,6 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         velocity[2] = msg.velocity[2] * R / 60 / 5;
         velocity[3] = msg.velocity[3] * R / 60 / 5;
     }
-    
-    std::cerr<< velocity[0] <<std::endl;
-    std::cerr<< "" <<std::endl;
     calculateRobot();
     Publish();
 }
@@ -91,7 +87,7 @@ void kinematicsNode::calculateInverseRobot(geometry_msgs::TwistStamped msg){
     for(int i = 0; i < 4; i++){
         vwheel[i] = 0;
         for(int j = 0; j < 3; j++){
-        vwheel[i] += A[i][j] * VCog[j];
+            vwheel[i] += Ainverse[i][j] * VCog[j];
         }
         rpm[i] = vwheel[i] / R * 60 * 5;
     }

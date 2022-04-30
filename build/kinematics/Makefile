@@ -68,17 +68,27 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target test
 test:
@@ -91,16 +101,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -112,6 +112,18 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -122,18 +134,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,6 +166,186 @@ preinstall/fast:
 depend:
 	cd /home/ubuntu/robotics/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages_eus: kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/rule
+
+.PHONY : kinematics_generate_messages_eus
+
+# fast build rule for target.
+kinematics_generate_messages_eus/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages_eus.dir/build
+.PHONY : kinematics_generate_messages_eus/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_gencpp.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_gencpp.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_gencpp.dir/rule
+
+# Convenience name for target.
+kinematics_gencpp: kinematics/CMakeFiles/kinematics_gencpp.dir/rule
+
+.PHONY : kinematics_gencpp
+
+# fast build rule for target.
+kinematics_gencpp/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_gencpp.dir/build.make kinematics/CMakeFiles/kinematics_gencpp.dir/build
+.PHONY : kinematics_gencpp/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages_cpp: kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/rule
+
+.PHONY : kinematics_generate_messages_cpp
+
+# fast build rule for target.
+kinematics_generate_messages_cpp/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages_cpp.dir/build
+.PHONY : kinematics_generate_messages_cpp/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages_nodejs: kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/rule
+
+.PHONY : kinematics_generate_messages_nodejs
+
+# fast build rule for target.
+kinematics_generate_messages_nodejs/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages_nodejs.dir/build
+.PHONY : kinematics_generate_messages_nodejs/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_geneus.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_geneus.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_geneus.dir/rule
+
+# Convenience name for target.
+kinematics_geneus: kinematics/CMakeFiles/kinematics_geneus.dir/rule
+
+.PHONY : kinematics_geneus
+
+# fast build rule for target.
+kinematics_geneus/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_geneus.dir/build.make kinematics/CMakeFiles/kinematics_geneus.dir/build
+.PHONY : kinematics_geneus/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_genpy.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_genpy.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_genpy.dir/rule
+
+# Convenience name for target.
+kinematics_genpy: kinematics/CMakeFiles/kinematics_genpy.dir/rule
+
+.PHONY : kinematics_genpy
+
+# fast build rule for target.
+kinematics_genpy/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_genpy.dir/build.make kinematics/CMakeFiles/kinematics_genpy.dir/build
+.PHONY : kinematics_genpy/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages_py.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages_py.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages_py.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages_py: kinematics/CMakeFiles/kinematics_generate_messages_py.dir/rule
+
+.PHONY : kinematics_generate_messages_py
+
+# fast build rule for target.
+kinematics_generate_messages_py/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages_py.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages_py.dir/build
+.PHONY : kinematics_generate_messages_py/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages: kinematics/CMakeFiles/kinematics_generate_messages.dir/rule
+
+.PHONY : kinematics_generate_messages
+
+# fast build rule for target.
+kinematics_generate_messages/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages.dir/build
+.PHONY : kinematics_generate_messages/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/rule
+.PHONY : kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/rule
+
+# Convenience name for target.
+_kinematics_generate_messages_check_deps_wheels_rpm: kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/rule
+
+.PHONY : _kinematics_generate_messages_check_deps_wheels_rpm
+
+# fast build rule for target.
+_kinematics_generate_messages_check_deps_wheels_rpm/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/build.make kinematics/CMakeFiles/_kinematics_generate_messages_check_deps_wheels_rpm.dir/build
+.PHONY : _kinematics_generate_messages_check_deps_wheels_rpm/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+kinematics_generate_messages_lisp: kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/rule
+
+.PHONY : kinematics_generate_messages_lisp
+
+# fast build rule for target.
+kinematics_generate_messages_lisp/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/build.make kinematics/CMakeFiles/kinematics_generate_messages_lisp.dir/build
+.PHONY : kinematics_generate_messages_lisp/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_genlisp.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_genlisp.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_genlisp.dir/rule
+
+# Convenience name for target.
+kinematics_genlisp: kinematics/CMakeFiles/kinematics_genlisp.dir/rule
+
+.PHONY : kinematics_genlisp
+
+# fast build rule for target.
+kinematics_genlisp/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_genlisp.dir/build.make kinematics/CMakeFiles/kinematics_genlisp.dir/build
+.PHONY : kinematics_genlisp/fast
+
+# Convenience name for target.
+kinematics/CMakeFiles/kinematics_gennodejs.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 kinematics/CMakeFiles/kinematics_gennodejs.dir/rule
+.PHONY : kinematics/CMakeFiles/kinematics_gennodejs.dir/rule
+
+# Convenience name for target.
+kinematics_gennodejs: kinematics/CMakeFiles/kinematics_gennodejs.dir/rule
+
+.PHONY : kinematics_gennodejs
+
+# fast build rule for target.
+kinematics_gennodejs/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f kinematics/CMakeFiles/kinematics_gennodejs.dir/build.make kinematics/CMakeFiles/kinematics_gennodejs.dir/build
+.PHONY : kinematics_gennodejs/fast
 
 # Convenience name for target.
 kinematics/CMakeFiles/kinematics_node.dir/rule:
@@ -243,13 +423,25 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... test"
+	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... test"
+	@echo "... kinematics_generate_messages_eus"
+	@echo "... kinematics_gencpp"
+	@echo "... kinematics_generate_messages_cpp"
+	@echo "... kinematics_generate_messages_nodejs"
+	@echo "... kinematics_geneus"
+	@echo "... kinematics_genpy"
+	@echo "... kinematics_generate_messages_py"
 	@echo "... edit_cache"
+	@echo "... kinematics_generate_messages"
+	@echo "... _kinematics_generate_messages_check_deps_wheels_rpm"
+	@echo "... install/local"
+	@echo "... kinematics_generate_messages_lisp"
+	@echo "... kinematics_genlisp"
+	@echo "... kinematics_gennodejs"
 	@echo "... kinematics_node"
 	@echo "... rebuild_cache"
-	@echo "... install"
 	@echo "... src/kinematicsMain.o"
 	@echo "... src/kinematicsMain.i"
 	@echo "... src/kinematicsMain.s"

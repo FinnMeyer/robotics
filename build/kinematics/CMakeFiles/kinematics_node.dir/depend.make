@@ -73,6 +73,7 @@ kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/mel
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsMain.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 
+kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /home/ubuntu/robotics/devel/include/kinematics/wheels_rpm.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /home/ubuntu/robotics/src/kinematics/src/kinematicsNode.cpp
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /home/ubuntu/robotics/src/kinematics/src/kinematicsNode.h
 kinematics/CMakeFiles/kinematics_node.dir/src/kinematicsNode.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
