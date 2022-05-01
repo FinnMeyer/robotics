@@ -1,2 +1,0 @@
-# robotics
-Robotics project polimi

@@ -291,10 +291,10 @@ actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 
 //Value Computed by CMake
-callbacks_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/callbacks
+callbacks_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/ros_launch
 
 //Value Computed by CMake
-callbacks_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/callbacks
+callbacks_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/ros_launch
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
@@ -398,6 +398,18 @@ pub_sub_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/pub_sub_v6
 
 //Value Computed by CMake
 pub_sub_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/pub_sub_v6
+
+//Value Computed by CMake
+ros_LAUNCH_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/ros_launch
+
+//Value Computed by CMake
+ros_LAUNCH_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/ros_launch
+
+//Value Computed by CMake
+ros_launch_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/ros_launch
+
+//Value Computed by CMake
+ros_launch_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/ros_launch
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
