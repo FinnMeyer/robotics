@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(solver_EXPORTED_TARGETS "solver_generate_messages_cpp;solver_generate_messages_eus;solver_generate_messages_lisp;solver_generate_messages_nodejs;solver_generate_messages_py")
+set(solver_EXPORTED_TARGETS "solver_generate_messages_cpp;solver_generate_messages_eus;solver_generate_messages_lisp;solver_generate_messages_nodejs;solver_generate_messages_py;solver_gencfg")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${solver_EXPORTED_TARGETS})
   if(NOT TARGET ${t})

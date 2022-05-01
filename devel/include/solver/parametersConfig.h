@@ -236,13 +236,11 @@ class DEFAULT
         boost::any val;
         (*_i)->getValue(config, val);
 
-        if("mode"==(*_i)->name){mode = boost::any_cast<bool>(val);}
-        if("fmt"==(*_i)->name){fmt = boost::any_cast<int>(val);}
+        if("fmt"==(*_i)->name){fmt = boost::any_cast<bool>(val);}
       }
     }
 
-    bool mode;
-int fmt;
+    bool fmt;
 
     bool state;
     std::string name;
@@ -253,9 +251,7 @@ int fmt;
 
 
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      bool mode;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int fmt;
+      bool fmt;
 //#line 228 "/opt/ros/melodic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -395,25 +391,15 @@ int fmt;
     {
 parametersConfig::GroupDescription<parametersConfig::DEFAULT, parametersConfig> Default("Default", "", 0, 0, true, &parametersConfig::groups);
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.mode = 0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.mode = 1;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.mode = 1;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<bool>("mode", "bool", 0, "Mode ", "", &parametersConfig::mode)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<bool>("mode", "bool", 0, "Mode ", "", &parametersConfig::mode)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.fmt = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.fmt = 3;
+      __max__.fmt = 1;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.fmt = 0;
+      __default__.fmt = 1;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<int>("fmt", "int", 1, "Format of count", "{'enum_description': 'Enum of formats', 'enum': [{'srcline': 10, 'description': 'Decimal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 0, 'ctype': 'int', 'type': 'int', 'name': 'Decimal'}, {'srcline': 11, 'description': 'Binary format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 1, 'ctype': 'int', 'type': 'int', 'name': 'Binary'}, {'srcline': 12, 'description': 'Octal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 2, 'ctype': 'int', 'type': 'int', 'name': 'Octal'}, {'srcline': 13, 'description': 'Hexadecimal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 3, 'ctype': 'int', 'type': 'int', 'name': 'Hexadecimal'}]}", &parametersConfig::fmt)));
+      Default.abstract_parameters.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<bool>("fmt", "bool", 0, "Mode ", "", &parametersConfig::fmt)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<int>("fmt", "int", 1, "Format of count", "{'enum_description': 'Enum of formats', 'enum': [{'srcline': 10, 'description': 'Decimal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 0, 'ctype': 'int', 'type': 'int', 'name': 'Decimal'}, {'srcline': 11, 'description': 'Binary format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 1, 'ctype': 'int', 'type': 'int', 'name': 'Binary'}, {'srcline': 12, 'description': 'Octal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 2, 'ctype': 'int', 'type': 'int', 'name': 'Octal'}, {'srcline': 13, 'description': 'Hexadecimal format', 'srcfile': '/home/ubuntu/robotics/src/solver/cfg/parameters.cfg', 'cconsttype': 'const int', 'value': 3, 'ctype': 'int', 'type': 'int', 'name': 'Hexadecimal'}]}", &parametersConfig::fmt)));
+      __param_descriptions__.push_back(parametersConfig::AbstractParamDescriptionConstPtr(new parametersConfig::ParamDescription<bool>("fmt", "bool", 0, "Mode ", "", &parametersConfig::fmt)));
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -493,14 +479,7 @@ parametersConfig::GroupDescription<parametersConfig::DEFAULT, parametersConfig> 
     return statics;
   }
 
-//#line 10 "/home/ubuntu/robotics/src/solver/cfg/parameters.cfg"
-      const int parameters_Decimal = 0;
-//#line 11 "/home/ubuntu/robotics/src/solver/cfg/parameters.cfg"
-      const int parameters_Binary = 1;
-//#line 12 "/home/ubuntu/robotics/src/solver/cfg/parameters.cfg"
-      const int parameters_Octal = 2;
-//#line 13 "/home/ubuntu/robotics/src/solver/cfg/parameters.cfg"
-      const int parameters_Hexadecimal = 3;
+
 }
 
 #undef DYNAMIC_RECONFIGURE_FINAL

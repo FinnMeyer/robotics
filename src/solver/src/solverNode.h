@@ -31,7 +31,7 @@ public:
     double y = 0;
     double yaw = 0;
     double yawHalf = 0;
-    bool euler = false;
+    bool euler = true;
     double v_x;
     double v_y;
     double yawrate;

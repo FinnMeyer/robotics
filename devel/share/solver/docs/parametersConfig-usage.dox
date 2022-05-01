@@ -1,8 +1,7 @@
 \subsubsection usage Usage
 \verbatim
-<node name="pub" pkg="solver" type="pub">
-  <param name="mode" type="bool" value="True" />
-  <param name="fmt" type="int" value="0" />
+<node name="solver" pkg="solver" type="solver">
+  <param name="fmt" type="bool" value="True" />
 </node>
 \endverbatim
 

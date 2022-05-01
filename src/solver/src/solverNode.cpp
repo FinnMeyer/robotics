@@ -67,7 +67,7 @@ void solverNode::calculateEuler(){
     }
 }
 void solverNode::calculateRK(){
-    if(start == true){
+    if(start == false){
     yaw = yaw_old + delta * yawrate;
     yawHalf = yaw_old + (delta / 2 * yawrate);
     x = x_old + delta * (v_x * cos(yawHalf) - sin(yawHalf) * v_y);

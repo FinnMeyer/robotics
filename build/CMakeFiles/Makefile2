@@ -466,7 +466,7 @@ callbacks/CMakeFiles/sub_callbacks_v3.dir/all: callbacks/CMakeFiles/roscpp_gener
 callbacks/CMakeFiles/sub_callbacks_v3.dir/all: callbacks/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v3.dir/build.make callbacks/CMakeFiles/sub_callbacks_v3.dir/depend
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v3.dir/build.make callbacks/CMakeFiles/sub_callbacks_v3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=42,43 "Built target sub_callbacks_v3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=43,44 "Built target sub_callbacks_v3"
 .PHONY : callbacks/CMakeFiles/sub_callbacks_v3.dir/all
 
 # Include target in all.
@@ -517,7 +517,7 @@ callbacks/CMakeFiles/sub_callbacks_v1.dir/all: callbacks/CMakeFiles/roscpp_gener
 callbacks/CMakeFiles/sub_callbacks_v1.dir/all: callbacks/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v1.dir/build.make callbacks/CMakeFiles/sub_callbacks_v1.dir/depend
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v1.dir/build.make callbacks/CMakeFiles/sub_callbacks_v1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=38,39 "Built target sub_callbacks_v1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=39,40 "Built target sub_callbacks_v1"
 .PHONY : callbacks/CMakeFiles/sub_callbacks_v1.dir/all
 
 # Include target in all.
@@ -856,7 +856,7 @@ callbacks/CMakeFiles/sub_callbacks_v2.dir/all: callbacks/CMakeFiles/roscpp_gener
 callbacks/CMakeFiles/sub_callbacks_v2.dir/all: callbacks/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v2.dir/build.make callbacks/CMakeFiles/sub_callbacks_v2.dir/depend
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_v2.dir/build.make callbacks/CMakeFiles/sub_callbacks_v2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=40,41 "Built target sub_callbacks_v2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=41,42 "Built target sub_callbacks_v2"
 .PHONY : callbacks/CMakeFiles/sub_callbacks_v2.dir/all
 
 # Include target in all.
@@ -1086,7 +1086,7 @@ callbacks/CMakeFiles/sub_callbacks_base.dir/all: callbacks/CMakeFiles/roscpp_gen
 callbacks/CMakeFiles/sub_callbacks_base.dir/all: callbacks/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_base.dir/build.make callbacks/CMakeFiles/sub_callbacks_base.dir/depend
 	$(MAKE) -f callbacks/CMakeFiles/sub_callbacks_base.dir/build.make callbacks/CMakeFiles/sub_callbacks_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=36,37 "Built target sub_callbacks_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=37,38 "Built target sub_callbacks_base"
 .PHONY : callbacks/CMakeFiles/sub_callbacks_base.dir/all
 
 # Include target in all.
@@ -1666,6 +1666,7 @@ clean: kinematics/CMakeFiles/kinematics_node.dir/clean
 # Convenience name for "all" pass in the directory.
 solver/all: solver/CMakeFiles/client.dir/all
 solver/all: solver/CMakeFiles/solver_node.dir/all
+solver/all: solver/CMakeFiles/solver_gencfg.dir/all
 solver/all: solver/CMakeFiles/solver_generate_messages.dir/all
 
 .PHONY : solver/all
@@ -1692,6 +1693,7 @@ solver/clean: solver/CMakeFiles/actionlib_generate_messages_cpp.dir/clean
 solver/clean: solver/CMakeFiles/solver_node.dir/clean
 solver/clean: solver/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 solver/clean: solver/CMakeFiles/solver_generate_messages_eus.dir/clean
+solver/clean: solver/CMakeFiles/solver_gencfg.dir/clean
 solver/clean: solver/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
 solver/clean: solver/CMakeFiles/actionlib_generate_messages_lisp.dir/clean
 solver/clean: solver/CMakeFiles/actionlib_generate_messages_nodejs.dir/clean
@@ -1804,7 +1806,7 @@ solver/CMakeFiles/solver_generate_messages_py.dir/all: callbacks/CMakeFiles/std_
 solver/CMakeFiles/solver_generate_messages_py.dir/all: solver/CMakeFiles/_solver_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_py.dir/build.make solver/CMakeFiles/solver_generate_messages_py.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_py.dir/build.make solver/CMakeFiles/solver_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=31,32 "Built target solver_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=32,33 "Built target solver_generate_messages_py"
 .PHONY : solver/CMakeFiles/solver_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2388,7 +2390,7 @@ solver/CMakeFiles/solver_node.dir/all: solver/CMakeFiles/dynamic_reconfigure_gen
 solver/CMakeFiles/solver_node.dir/all: solver/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_node.dir/build.make solver/CMakeFiles/solver_node.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_node.dir/build.make solver/CMakeFiles/solver_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=33,34,35 "Built target solver_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=34,35,36 "Built target solver_node"
 .PHONY : solver/CMakeFiles/solver_node.dir/all
 
 # Include target in all.
@@ -2458,7 +2460,7 @@ solver/CMakeFiles/solver_generate_messages_eus.dir/all: callbacks/CMakeFiles/std
 solver/CMakeFiles/solver_generate_messages_eus.dir/all: solver/CMakeFiles/_solver_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_eus.dir/build.make solver/CMakeFiles/solver_generate_messages_eus.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_eus.dir/build.make solver/CMakeFiles/solver_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=27,28 "Built target solver_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=28,29 "Built target solver_generate_messages_eus"
 .PHONY : solver/CMakeFiles/solver_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2480,6 +2482,43 @@ solver/CMakeFiles/solver_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: solver/CMakeFiles/solver_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target solver/CMakeFiles/solver_gencfg.dir
+
+# All Build rule for target.
+solver/CMakeFiles/solver_gencfg.dir/all:
+	$(MAKE) -f solver/CMakeFiles/solver_gencfg.dir/build.make solver/CMakeFiles/solver_gencfg.dir/depend
+	$(MAKE) -f solver/CMakeFiles/solver_gencfg.dir/build.make solver/CMakeFiles/solver_gencfg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=26 "Built target solver_gencfg"
+.PHONY : solver/CMakeFiles/solver_gencfg.dir/all
+
+# Include target in all.
+all: solver/CMakeFiles/solver_gencfg.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+solver/CMakeFiles/solver_gencfg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/robotics/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 solver/CMakeFiles/solver_gencfg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/robotics/build/CMakeFiles 0
+.PHONY : solver/CMakeFiles/solver_gencfg.dir/rule
+
+# Convenience name for target.
+solver_gencfg: solver/CMakeFiles/solver_gencfg.dir/rule
+
+.PHONY : solver_gencfg
+
+# clean rule for target.
+solver/CMakeFiles/solver_gencfg.dir/clean:
+	$(MAKE) -f solver/CMakeFiles/solver_gencfg.dir/build.make solver/CMakeFiles/solver_gencfg.dir/clean
+.PHONY : solver/CMakeFiles/solver_gencfg.dir/clean
+
+# clean rule for target.
+clean: solver/CMakeFiles/solver_gencfg.dir/clean
 
 .PHONY : clean
 
@@ -2916,7 +2955,7 @@ solver/CMakeFiles/solver_generate_messages_cpp.dir/all: callbacks/CMakeFiles/std
 solver/CMakeFiles/solver_generate_messages_cpp.dir/all: solver/CMakeFiles/_solver_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_cpp.dir/build.make solver/CMakeFiles/solver_generate_messages_cpp.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_cpp.dir/build.make solver/CMakeFiles/solver_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=26 "Built target solver_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=27 "Built target solver_generate_messages_cpp"
 .PHONY : solver/CMakeFiles/solver_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2949,7 +2988,7 @@ solver/CMakeFiles/solver_generate_messages_lisp.dir/all: callbacks/CMakeFiles/st
 solver/CMakeFiles/solver_generate_messages_lisp.dir/all: solver/CMakeFiles/_solver_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_lisp.dir/build.make solver/CMakeFiles/solver_generate_messages_lisp.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_lisp.dir/build.make solver/CMakeFiles/solver_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=29 "Built target solver_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=30 "Built target solver_generate_messages_lisp"
 .PHONY : solver/CMakeFiles/solver_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3078,7 +3117,7 @@ solver/CMakeFiles/solver_generate_messages_nodejs.dir/all: callbacks/CMakeFiles/
 solver/CMakeFiles/solver_generate_messages_nodejs.dir/all: solver/CMakeFiles/_solver_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_nodejs.dir/build.make solver/CMakeFiles/solver_generate_messages_nodejs.dir/depend
 	$(MAKE) -f solver/CMakeFiles/solver_generate_messages_nodejs.dir/build.make solver/CMakeFiles/solver_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=30 "Built target solver_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/robotics/build/CMakeFiles --progress-num=31 "Built target solver_generate_messages_nodejs"
 .PHONY : solver/CMakeFiles/solver_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.

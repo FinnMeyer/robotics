@@ -393,6 +393,12 @@ message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 
+//Value Computed by CMake
+pub_sub_BINARY_DIR:STATIC=/home/ubuntu/robotics/build/pub_sub_v6
+
+//Value Computed by CMake
+pub_sub_SOURCE_DIR:STATIC=/home/ubuntu/robotics/src/pub_sub_v6
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
 

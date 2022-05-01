@@ -483,6 +483,21 @@ solver_generate_messages_eus/fast:
 .PHONY : solver_generate_messages_eus/fast
 
 # Convenience name for target.
+solver/CMakeFiles/solver_gencfg.dir/rule:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 solver/CMakeFiles/solver_gencfg.dir/rule
+.PHONY : solver/CMakeFiles/solver_gencfg.dir/rule
+
+# Convenience name for target.
+solver_gencfg: solver/CMakeFiles/solver_gencfg.dir/rule
+
+.PHONY : solver_gencfg
+
+# fast build rule for target.
+solver_gencfg/fast:
+	cd /home/ubuntu/robotics/build && $(MAKE) -f solver/CMakeFiles/solver_gencfg.dir/build.make solver/CMakeFiles/solver_gencfg.dir/build
+.PHONY : solver_gencfg/fast
+
+# Convenience name for target.
 solver/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/ubuntu/robotics/build && $(MAKE) -f CMakeFiles/Makefile2 solver/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
 .PHONY : solver/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
@@ -880,6 +895,7 @@ help:
 	@echo "... solver_node"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... solver_generate_messages_eus"
+	@echo "... solver_gencfg"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... test"
