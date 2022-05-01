@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-    <node pkg="kinematics" type="kinematics_node" name="kinematics" output="screen">
-    </node>
-
-
-</launch>
