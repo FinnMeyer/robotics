@@ -30,10 +30,10 @@ kinematicsNode::kinematicsNode()
         , CmdSubscriber(n_.subscribe("/cmd_vel", 1, &kinematicsNode::calculateInverseRobot, this))
 
 {
-    //odometrySub_ = n_.subscribe("/odometry", 1, &kinematicsNode::odometryCallback, this);
-    //carSensorsSub_ = n_.subscribe("/car_sensors", 1, &kinematicsNode::carSensorsCallback, this);
-
-    // n_.getParam("/kinematics/kp", kp);
+    n_.getParam("/kinematics/R", R);
+    n_.getParam("/kinematics/N", N);
+    n_.getParam("/kinematics/l", l);
+    n_.getParam("/kinematics/w", w);
 }
 
 kinematicsNode::~kinematicsNode(){
@@ -42,14 +42,12 @@ kinematicsNode::~kinematicsNode(){
  * Private Functions
  * General information: Notes regarding the variables can be found at the declaration in the kinematicsNode.h file
  ****************************/
-
-
 void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
     if(ticks == true){
-        velocity[0] = (msg.position[0] - oldposition[0]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
-        velocity[1] = (msg.position[1] - oldposition[1]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
-        velocity[2] = (msg.position[2] - oldposition[2]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
-        velocity[3] = (msg.position[3] - oldposition[3]) * 2 * M_PI / 5 / 42 * R / ((msg.header.stamp.nsec - oldStamp) / 1000000000);
+        velocity[0] = (msg.position[0] - oldposition[0]) * 2 * M_PI / 5 / N * R / ((msg.header.stamp.toSec() - oldStamp));
+        velocity[1] = (msg.position[1] - oldposition[1]) * 2 * M_PI / 5 / N * R / ((msg.header.stamp.toSec() - oldStamp));
+        velocity[2] = (msg.position[2] - oldposition[2]) * 2 * M_PI / 5 / N * R / ((msg.header.stamp.toSec() - oldStamp));
+        velocity[3] = (msg.position[3] - oldposition[3]) * 2 * M_PI / 5 / N * R / ((msg.header.stamp.toSec() - oldStamp));
         if(start == false){
             for(int i = 0; i < 4; i++){
                 velocity[i] = 0;
@@ -58,7 +56,7 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         for(int i = 0; i < 4; i++){
             oldposition[i] = msg.position[i];
         }   
-        oldStamp = msg.header.stamp.nsec;
+        oldStamp = msg.header.stamp.toSec();
         start = true;
     }
     else{
@@ -68,10 +66,13 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         velocity[3] = msg.velocity[3] * R / 60 / 5;
     }
     calculateRobot();
-    Publish();
+    Publish();    
 }
 
 void kinematicsNode::calculateRobot(){
+    double A [3][4] =  {{1, 1, 1, 1},
+                        {-1, 1, 1, -1},
+                        {-1/(l + w), 1/(l + w), -1/(l + w), 1/(l + w)}};
     for(int i = 0; i < 3; i++){
         states[i] = 0;
         for(int j = 0; j < 4; j++){
@@ -81,6 +82,10 @@ void kinematicsNode::calculateRobot(){
 }
 
 void kinematicsNode::calculateInverseRobot(geometry_msgs::TwistStamped msg){
+    double Ainverse [4][3] =  {{1, -1, -1/(l + w)},
+                                {1, 1, 1/(l + w)},
+                                {1, 1, -1/(l + w)},
+                                {1, -1, 1/(l + w)}};
     VCog[0] = msg.twist.linear.x;
     VCog[1] = msg.twist.linear.y;
     VCog[2] = msg.twist.angular.z;

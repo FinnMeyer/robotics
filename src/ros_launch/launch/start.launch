@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="kinematics" type="kinematics_node" name="kinematics" output="screen">
+        <param name="l"   value="0.2" type="double" />
+        <param name="w"   value="0.169" type="double" />
+        <param name="R"   value="0.07" type="double" />
+        <param name="N"   value="42.0" type="double" />
     </node>
     <node pkg="solver" type="solver_node" name="solver" output="screen">
         <param name="x"   value="0.0" type="double" />

@@ -15,17 +15,17 @@
 
 bool reset_callback(solverNode * solve, solver::Reset::Request  &req, 
                     solver::Reset::Response &res) {
-    res.old_x = solve->x;
-    solve->x_old = req.x;
-    solve->x = req.x;
+    res.old_x = solve->xodom;
+    solve->xodom = req.x;
+    solve->xodom = req.x;
 
     res.old_y = solve->y;
-    solve->y_old = req.y;
-    solve->y = req.x;
+    solve->yodom = req.y;
+    solve->yodom = req.x;
 
     res.old_yaw = solve->yaw;
-    solve->yaw_old = req.yaw;
-    solve->yaw = req.yaw;
+    solve->yawodom = req.yaw;
+    solve->yawodom = req.yaw;
     ROS_INFO("Changed values");
     return true;
 }
@@ -33,7 +33,6 @@ bool reset_callback(solverNode * solve, solver::Reset::Request  &req,
 void param_callback(solverNode * solve, solver::parametersConfig &config, uint32_t level) {
     solve->euler = config.fmt;
 }
-
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "solver");
@@ -45,12 +44,6 @@ int main(int argc, char **argv)
     dynServer.setCallback(f);
     ros::ServiceServer service = 
     n.advertiseService<solver::Reset::Request, solver::Reset::Response>("reset",boost::bind(&reset_callback, pointer, _1, _2));
-    ros::Rate r(200);
-    while (ros::ok())
-    {
-    pointer->solver();
-    ros::spinOnce();
-    r.sleep();
-    }
+    ros::spin();
     return EXIT_SUCCESS;
 }

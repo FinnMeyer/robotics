@@ -32,14 +32,8 @@ private:
     double vwheel[4];
     double VCog[3];
     double rpm[4];
-    double A [3][4] =  {{1, 1, 1, 1},
-                        {-1, 1, 1, -1},
-                        {-1/(l + w), 1/(l + w), -1/(l + w), 1/(l + w)}};
-                        
-    double Ainverse [4][3] =  {{1, -1, -1/(l + w)},
-                                {1, 1, 1/(l + w)},
-                                {1, 1, -1/(l + w)},
-                                {1, -1, 1/(l + w)}};
+    double N;
+    
 
 
 public:
