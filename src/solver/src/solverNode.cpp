@@ -30,6 +30,7 @@ solverNode::solverNode()
     n_.getParam("/solver/x", xodom);
     n_.getParam("/solver/y", yodom);
     n_.getParam("/solver/yaw", yawodom);
+    n_.getParam("/solver/euler", euler);
     callback();
     SetBaseLink(xodom*2,yodom*2,yawodom*2);
 }

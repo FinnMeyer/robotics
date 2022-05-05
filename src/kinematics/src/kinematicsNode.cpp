@@ -34,6 +34,7 @@ kinematicsNode::kinematicsNode()
     n_.getParam("/kinematics/N", N);
     n_.getParam("/kinematics/l", l);
     n_.getParam("/kinematics/w", w);
+    n_.getParam("/kinematics/ticks", ticks);
 }
 
 kinematicsNode::~kinematicsNode(){
@@ -103,7 +104,7 @@ void kinematicsNode::calculateInverseRobot(geometry_msgs::TwistStamped msg){
 void kinematicsNode::Publish(){
     geometry_msgs::TwistStamped Kinematics;
      
-    Kinematics.header.frame_id = "robot";
+    Kinematics.header.frame_id = "base_link";
     Kinematics.header.stamp = time;
     Kinematics.twist.linear.x = states[0];
     Kinematics.twist.linear.y = states[1];
@@ -117,7 +118,7 @@ void kinematicsNode::Publish(){
 void kinematicsNode::PublishRPM(){
     kinematics::wheels_rpm Rpm;
      
-    Rpm.header.frame_id = "robot";
+    Rpm.header.frame_id = "bae_link";
     Rpm.rpm_fl = rpm[0];
     Rpm.rpm_fr = rpm[1];
     Rpm.rpm_rl = rpm[2];
