@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/robotics/devel
-
-Name: callbacks
-Description: Description of callbacks
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
