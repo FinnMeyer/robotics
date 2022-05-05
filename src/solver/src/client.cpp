@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "reset_client");
-  if (argc != 2)
+  if (argc != 4)
   {
     ROS_INFO("usage: reset_client new_count");
     return 1;
@@ -14,7 +14,9 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<solver::Reset>("reset");
   solver::Reset srv;
-  srv.request.x = 1;
+  srv.request.x = 1.0;
+  srv.request.y = 1.0;
+  srv.request.yaw = 0.0;
   if (client.call(srv))
   {
     ROS_INFO("Old count: %ld", (long int)srv.response.old_x);

@@ -70,8 +70,10 @@ void solverNode::solver(){
 }
 void solverNode::calculateEuler(){
     yaw = yaw_old + delta * yawrate;
-    x = x_old + delta * (v_x * cos(yaw) - sin(yaw) * v_y);
-    y = y_old + delta * (v_x * sin(yaw) + cos(yaw) * v_y);
+    x = x_old + delta * (v_x * cos(yaw_old) - sin(yaw_old) * v_y);
+    y = y_old + delta * (v_x * sin(yaw_old) + cos(yaw_old) * v_y);
+
+
     v_x = (v_x * cos(yaw) - sin(yaw) * v_y);
     v_y = (v_x * sin(yaw) + cos(yaw) * v_y);
     yaw_old = yaw;
@@ -83,6 +85,7 @@ void solverNode::calculateRK(){
     yawHalf = yaw_old + (delta / 2 * yawrate);
     x = x_old + delta * (v_x * cos(yawHalf) - sin(yawHalf) * v_y);
     y = y_old + delta * (v_x * sin(yawHalf) + cos(yawHalf) * v_y);
+
     v_x = (v_x * cos(yaw) - sin(yaw) * v_y);
     v_y = (v_x * sin(yaw) + cos(yaw) * v_y);
 

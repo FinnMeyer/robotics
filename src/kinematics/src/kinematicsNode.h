@@ -24,6 +24,7 @@ private:
     double R = 0.07;
     double l = 0.2;
     double w = 0.169;
+    ros::Time time;
     bool ticks = true;
     double oldStamp = 0;
     double velocity[4];

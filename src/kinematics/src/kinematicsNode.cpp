@@ -65,6 +65,7 @@ void kinematicsNode::wheelDataCallback(sensor_msgs::JointState msg){
         velocity[2] = msg.velocity[2] * R / 60 / 5;
         velocity[3] = msg.velocity[3] * R / 60 / 5;
     }
+    time = msg.header.stamp;
     calculateRobot();
     Publish();    
 }
@@ -76,7 +77,7 @@ void kinematicsNode::calculateRobot(){
     for(int i = 0; i < 3; i++){
         states[i] = 0;
         for(int j = 0; j < 4; j++){
-        states[i] += 0.25 * A[i][j] * velocity[j];
+            states[i] += 0.25 * A[i][j] * velocity[j];
         }
     }
 }
@@ -103,7 +104,7 @@ void kinematicsNode::Publish(){
     geometry_msgs::TwistStamped Kinematics;
      
     Kinematics.header.frame_id = "robot";
-    Kinematics.header.stamp = ros::Time::now();
+    Kinematics.header.stamp = time;
     Kinematics.twist.linear.x = states[0];
     Kinematics.twist.linear.y = states[1];
     Kinematics.twist.linear.z = 0;

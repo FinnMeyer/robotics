@@ -1,0 +1,75 @@
+Team:
+    Name: Finn Wilhelm Meyer
+    Student ID: 102084
+Description:
+
+Ros parameter:
+   for kinematics package:
+        l : length of the robot
+        w : width of the robot
+        R : wheel radius of the robot
+        N : ticks per revelution for the wheel encoders
+    for the solver package:
+        x : x position of the robot cog
+        y : y position of the robot cog
+        yaw : yaw position of the robot cog
+        note: when constructing the solver node the base_link 
+        and the odom tf will be set to this potion when changing the 
+        parameters with the service only the odom tf will be moved
+        and the base_link stays at the current poition
+Tf tree:
+    world->odom->base_link
+    note: the odom is static and is manually set to the starting position
+    from the bag files the base_link is dynamic and is placed at the
+    cog of the robot and reverts the service changes when the odom tf is
+    set to another location -> the base_link alway stays in the cog of the robot
+custom message:
+    wheels_rpm.msg:
+        Header header
+        float64 rpm_fl -> wheel speed front left in radians per minute (same format as the the bag file)
+        float64 rpm_fr -> wheel speed front right in radians per minute (same format as the the bag file)
+        float64 rpm_rr -> wheel speed rear left in radians per minute (same format as the the bag file)
+        float64 rpm_rl -> wheel speed rear right in radians per minute (same format as the the bag file)
+        note: this is a custom message to publish the wheel speeds
+        of the robot
+How to start/use nodes:
+    roslaunch ros_launch start.launch
+    note: this starts the solver node and the kinematics node and uses the launch parameter inside
+    the launch file you just started the launch file is located in:
+    src/ros_launch/launch/start.launch
+Extra Info:
+    This project is devided into two packages kinematics and solver:
+    the kinematics package only has the kinematics node
+    the solver package has the client and the solver node
+    This has the addvantage of building the packages independently (this is possible when using catkin build) so you dont have to build 
+    everything again and is a convention from another ros project I worked on
+    here it might be a bit overkill but I still used this convention
+
+    Sturcture of the folder:
+    kinematics folder:
+        msg folder:
+            wheels_rpm msg -> to publish rpm of each wheel
+        src folder:
+            kinematicsNode.cpp -> Class with all the kinematics related functions: calculating cog velocity, calculating rpm from cog velocity
+            kinemticsNode.h -> all declarations for kinematicsNode.cpp
+            kinematicsMain.cpp -> this just launches a kinematicsNode object and ros::spin
+    solver folder:
+        cfg folder:
+            parameter.cfg -> to publish declare the dynamic reconfiguration for Euler or RK integration
+        src folder:
+            solverNode.cpp -> Class with all the solver related functions: Euler and RK integration
+            solverNode.h -> all declarations for solverNode.cpp
+            solverMain.cpp -> launches a solverNode object and ros::spin and also has the dynamic reconfiguration 
+                and service callback function to change eiler/RK parameter and x,y,yaw odom position
+            client.cpp -> to change the x,y,yaw odom position, this is even an extra node which dos not get launched
+                by the launch file but you can manually launch and all it does is change the x,y,yaw position ones
+                you can also just use the service by using the shell command
+        srv folder:
+        Reset.srv -> declares the x,y,yaw service msg for the x,y,yaw odom position service
+    ros_launch folder:
+        launch folder:
+            start.launch -> starts kinematics and solver node + all the needed parameters
+
+Additional Infos:
+    My Reset service changes the odom tf, so the odom msg which also publishes in the odom tf wont change
+    but when looking at the world frame (e.g. on rviz) you can see that the psotion changes realtive to the world frame
