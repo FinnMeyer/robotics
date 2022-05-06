@@ -37,6 +37,9 @@ public:
     double xodom = 0;
     double yodom = 0;
     double yawodom = 0;
+    double x_base_link = 0;
+    double y_base_link = 0;
+    double yaw_base_link = 0;
     double yaw = 0;
     double yawHalf = 0;
     bool euler = true;

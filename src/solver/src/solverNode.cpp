@@ -31,8 +31,7 @@ solverNode::solverNode()
     n_.getParam("/solver/y", yodom);
     n_.getParam("/solver/yaw", yawodom);
     n_.getParam("/solver/euler", euler);
-    callback();
-    SetBaseLink(xodom*2,yodom*2,yawodom*2);
+    SetBaseLink(xodom, yodom, yawodom);
 }
 
 solverNode::~solverNode(){
@@ -117,12 +116,13 @@ void solverNode::callback(){
     transformStamped.header.frame_id = "odom";
     transformStamped.child_frame_id = "base_link";
     // set x,y
-    transformStamped.transform.translation.x = x-xodom;
-    transformStamped.transform.translation.y = y-yodom;
+
+    transformStamped.transform.translation.x = x;
+    transformStamped.transform.translation.y = y;
     transformStamped.transform.translation.z = 0.0;
     // set theta
     tf2::Quaternion q;
-    q.setRPY(0, 0, (yaw-yawodom));
+    q.setRPY(0, 0, yaw);
     transformStamped.transform.rotation.x = q.x();
     transformStamped.transform.rotation.y = q.y();
     transformStamped.transform.rotation.z = q.z();
@@ -164,7 +164,7 @@ void solverNode::Publish(){
     solver.pose.pose.orientation.w = q.w();
     solver.twist.twist.linear.x = v_x;
     solver.twist.twist.linear.y = v_y;
-    solver.twist.twist.linear.x = 0.0;
+    solver.twist.twist.linear.z = 0.0;
     Pub_.publish(solver);
 }
  
