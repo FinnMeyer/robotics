@@ -16,19 +16,16 @@
 bool reset_callback(solverNode * solve, solver::Reset::Request  &req, 
                     solver::Reset::Response &res) {
     res.old_x = solve->x;
-    solve->x_base_link = solve->x;
     solve->x = 0;
     solve->x_old = 0;
     solve->xodom = req.x;
 
     res.old_y = solve->y;
-    solve->y_base_link = solve->y;
     solve->y = 0;
     solve->y_old = 0;
     solve->yodom = req.y;
 
     res.old_yaw = solve->yaw;
-    solve->yaw_base_link = solve->yaw;
     solve->yaw = 0;
     solve->yaw_old = 0;
     solve->yawodom = req.yaw;
