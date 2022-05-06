@@ -9,10 +9,12 @@ Ros parameter:
         w : width of the robot
         R : wheel radius of the robot
         N : ticks per revelution for the wheel encoders
+        ticks: if true uses ticks for velocity, if false uses rpm
     for the solver package:
         x : x position of the robot cog
         y : y position of the robot cog
         yaw : yaw position of the robot cog
+        euler : if true than calculates odom with euler integration, if false uses RK
         note: when constructing the solver node the base_link 
         and the odom tf will be set to this potion when changing the 
         parameters with the service only the odom tf will be moved

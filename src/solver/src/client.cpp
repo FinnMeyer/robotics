@@ -19,7 +19,7 @@ int main(int argc, char **argv)
   srv.request.yaw = 0.0;
   if (client.call(srv))
   {
-    ROS_INFO("Old count: %ld", (long int)srv.response.old_x);
+    ROS_INFO("updated odometry tf");
   }
   else
   {
