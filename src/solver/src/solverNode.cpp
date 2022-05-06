@@ -51,7 +51,6 @@ void solverNode::odometryCallback(geometry_msgs::TwistStamped msg){
         if(delta < 0.001){
             delta = 0.001;
         }
-        std::cerr<< delta << std::endl;
         solver();
         }   
     oldStamp = msg.header.stamp.toSec();
@@ -73,7 +72,6 @@ void solverNode::calculateEuler(){
     yaw = yaw_old + delta * yawrate;
     x = x_old + delta * (v_x * cos(yaw_old) - sin(yaw_old) * v_y);
     y = y_old + delta * (v_x * sin(yaw_old) + cos(yaw_old) * v_y);
-
 
     v_x = (v_x * cos(yaw) - sin(yaw) * v_y);
     v_y = (v_x * sin(yaw) + cos(yaw) * v_y);
@@ -101,7 +99,6 @@ void solverNode::callback(){
     transformStamped.header.frame_id = "world";
     transformStamped.child_frame_id = "odom";
     // set x,y
-    std::cerr<< xodom << std::endl;
     transformStamped.transform.translation.x = xodom;
     transformStamped.transform.translation.y = yodom;
     transformStamped.transform.translation.z = 0.0;
@@ -120,7 +117,6 @@ void solverNode::callback(){
     transformStamped.header.frame_id = "odom";
     transformStamped.child_frame_id = "base_link";
     // set x,y
-    std::cerr<< x << std::endl;
     transformStamped.transform.translation.x = x-xodom;
     transformStamped.transform.translation.y = y-yodom;
     transformStamped.transform.translation.z = 0.0;

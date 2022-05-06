@@ -31,7 +31,13 @@ bool reset_callback(solverNode * solve, solver::Reset::Request  &req,
 }
 
 void param_callback(solverNode * solve, solver::parametersConfig &config, uint32_t level) {
-    solve->euler = config.fmt;
+    if(config.fmt == 0){
+        solve->euler =true;
+    }
+    else if (config.fmt == 1)
+    {
+        solve->euler =false;
+    }  
 }
 int main(int argc, char **argv)
 {
