@@ -46,6 +46,12 @@ Extra Info:
     everything again and is a convention from another ros project I worked on
     here it might be a bit overkill but I still used this convention
 
+    When reseting the odom the tf frame is set to that position and the odom msg and the base_link are set to 0,0,0 in this odom tf
+
+    When looking at the odom msg and robot/pose msg in plotjuggler you might see a offset for x,y,yaw: this is because the odom msg is published in the
+    odom tf while robot/pose is published in world -> this offset is handeled by the world -> odom tf so when looking at the odom msg from world frame (e.g. in rviz)
+    you will see that the positions align
+
     Sturcture of the folder:
     kinematics folder:
         msg folder:
@@ -70,5 +76,3 @@ Extra Info:
     ros_launch folder:
         launch folder:
             start.launch -> starts kinematics and solver node + all the needed parameters
-Additional info:
-    When reseting the odom the tf frame is set to that position and the odom msg and the base_link are set to 0,0,0 in this odom tf

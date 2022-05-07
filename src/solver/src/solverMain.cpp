@@ -7,8 +7,6 @@
 #include "std_msgs/String.h"
 #include "solver/Reset.h"
 
-#include <sstream>
-#include <bitset>
 
 #include <dynamic_reconfigure/server.h>
 #include <solver/parametersConfig.h>

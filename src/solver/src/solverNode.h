@@ -6,8 +6,6 @@
 # include "sensor_msgs/JointState.h"
 # include "geometry_msgs/TwistStamped.h"
 #include <tf2_ros/transform_broadcaster.h>
-#include <fstream>
-#include <iostream>
 #include "solver/Reset.h"
 class solverNode
 {
@@ -21,7 +19,7 @@ private:
     ros::Publisher Pub_;
     void odometryCallback(geometry_msgs::TwistStamped msg);
     void Publish();
-    void callback();
+    void publishTF();
     void calculateEuler();
     void calculateRK();
 

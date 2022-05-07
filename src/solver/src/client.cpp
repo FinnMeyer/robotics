@@ -7,7 +7,6 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "reset_client");
   if (argc != 4)
   {
-    ROS_INFO("usage: reset_client new_count");
     return 1;
   }
 

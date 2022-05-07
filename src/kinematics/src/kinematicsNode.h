@@ -5,8 +5,6 @@
 #include <nav_msgs/Odometry.h>
 # include "sensor_msgs/JointState.h"
 # include "geometry_msgs/TwistStamped.h"
-#include <fstream>
-#include <iostream>
 class kinematicsNode
 {
 private:

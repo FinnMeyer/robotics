@@ -7,17 +7,6 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include "solver/Reset.h"
 
-//using namespace std;
-/****************************
- * Public Functions
- ****************************/
-
-/*
- */
-
-/**
- * @brief Constructor for the solverNode class
- */
 solverNode::solverNode()
         : n_                       ()
         , nPriv_                   ("~")
@@ -25,8 +14,6 @@ solverNode::solverNode()
         , wheelDataSubscriber(n_.subscribe("/cmd_vel", 1, &solverNode::odometryCallback, this))
 
 {
-    //odometrySub_ = n_.subscribe("/odometry", 1, &solverNode::odometryCallback, this);
-    //carSensorsSub_ = n_.subscribe("/car_sensors", 1, &solverNode::carSensorsCallback, this);
     n_.getParam("/solver/x", xodom);
     n_.getParam("/solver/y", yodom);
     n_.getParam("/solver/yaw", yawodom);
@@ -63,7 +50,7 @@ void solverNode::solver(){
     else{
         calculateRK();
     }
-    callback();
+    publishTF();
     Publish();
 
 }
@@ -92,7 +79,7 @@ void solverNode::calculateRK(){
     y_old = y;
 }
 
-void solverNode::callback(){
+void solverNode::publishTF(){
         // set header
     transformStamped.header.stamp = ros::Time::now();
     transformStamped.header.frame_id = "world";

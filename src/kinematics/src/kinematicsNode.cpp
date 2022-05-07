@@ -5,12 +5,6 @@
 # include "geometry_msgs/TwistStamped.h"
 #include <kinematics/wheels_rpm.h>
 # include <math.h>
-#include <fstream>
-#include <iostream>
-//# include <iostream>
-//# include <cstdlib>
-//# include <algorithm>
-//using namespace std;
 /****************************
  * Public Functions
  ****************************/
@@ -118,7 +112,7 @@ void kinematicsNode::Publish(){
 void kinematicsNode::PublishRPM(){
     kinematics::wheels_rpm Rpm;
      
-    Rpm.header.frame_id = "bae_link";
+    Rpm.header.frame_id = "base_link";
     Rpm.rpm_fl = rpm[0];
     Rpm.rpm_fr = rpm[1];
     Rpm.rpm_rl = rpm[2];

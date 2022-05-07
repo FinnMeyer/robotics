@@ -14,10 +14,8 @@ generate_messages(
   
 )
 
-## Declare a catkin package
 catkin_package()
 
-## Build talker and listener
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 include_directories(srv ${catkin_INCLUDE_DIRS})
