@@ -23,8 +23,7 @@ Tf tree:
     world->odom->base_link
     note: the odom is static and is manually set to the starting position
     from the bag files the base_link is dynamic and is placed at the
-    cog of the robot and reverts the service changes when the odom tf is
-    set to another location -> the base_link alway stays in the cog of the robot
+    cog of the robot
 custom message:
     wheels_rpm.msg:
         Header header
@@ -71,7 +70,5 @@ Extra Info:
     ros_launch folder:
         launch folder:
             start.launch -> starts kinematics and solver node + all the needed parameters
-
-Additional Infos:
-    My Reset service changes the odom tf, so the odom msg which also publishes in the odom tf wont change
-    but when looking at the world frame (e.g. on rviz) you can see that the psotion changes realtive to the world frame
+Additional info:
+    When reseting the odom the tf frame is set to that position and the odom msg and the base_link are set to 0,0,0 in this odom tf
