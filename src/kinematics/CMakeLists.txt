@@ -13,9 +13,8 @@ generate_messages(
 catkin_package()
 
 
-include_directories(include ${catkin_INCLUDE_DIRS})
 include_directories(msg ${catkin_INCLUDE_DIRS})
 
 add_executable(kinematics_node src/kinematicsMain.cpp src/kinematicsNode.cpp)
-add_dependencies(kinematics_node ${catkin_EXPORTED_TARGETS})
+add_dependencies(kinematics_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(kinematics_node ${catkin_LIBRARIES})
