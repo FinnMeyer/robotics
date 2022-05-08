@@ -64,6 +64,9 @@ Extra Info:
     When looking at the odom msg and robot/pose msg in plotjuggler you might see a offset for x,y,yaw: this is because the odom msg is published in the
     odom tf while robot/pose is published in world -> this offset is handeled by the world -> odom tf so when looking at the odom msg from world frame (e.g. in rviz)
     you will see that the positions align
+    Testing in rviz:
+	For seeing the groundtrouth and the odom msg the topics need to be added to rviz.
+	there is no extra groundtrouth tf or something
 
     Sturcture of the folder:
     kinematics folder:
