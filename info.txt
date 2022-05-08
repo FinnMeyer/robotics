@@ -47,6 +47,19 @@ Extra Info:
     here it might be a bit overkill but I still used this convention
 
     When reseting the odom the tf frame is set to that position and the odom msg and the base_link are set to 0,0,0 in this odom tf
+    You can reset using:
+	rosservice call /reset "x: 0.0
+	y: 0.0
+	yaw: 0.0" 
+   If you want to dynamically reconfigure:
+	rosrun dynamic_reconfigure dynparam set /solver fmt 1
+	where 1 is euler and 0 is RK
+   Calibrating:
+	Done by hand.
+	First R was tuned using the first bag on the linear motion in x direction and with the RPM.
+	Then N was tune the same way but with ticks the R value from the first tuning was used.
+	Then l was tuned using the rotation from the secound bag file.
+	w was kept the same because l and w have the same effect on the robot and I decided to only tune l. 
 
     When looking at the odom msg and robot/pose msg in plotjuggler you might see a offset for x,y,yaw: this is because the odom msg is published in the
     odom tf while robot/pose is published in world -> this offset is handeled by the world -> odom tf so when looking at the odom msg from world frame (e.g. in rviz)

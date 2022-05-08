@@ -34,11 +34,14 @@ bool reset_callback(solverNode * solve, solver::Reset::Request  &req,
 void param_callback(solverNode * solve, solver::parametersConfig &config, uint32_t level) {
     if(config.fmt == 0){
         solve->euler =true;
+        ROS_INFO("Changed to Euler");
     }
     else if (config.fmt == 1)
     {
         solve->euler =false;
+        ROS_INFO("Changed to RK");
     }  
+
 }
 int main(int argc, char **argv)
 {
