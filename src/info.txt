@@ -3,4 +3,4 @@ Team:
     Student ID: 102084
 Description:
 
-rosrun map_server map_saver -f $(find amcl)/mymap
+rosrun map_server map_saver -f ../mymap
