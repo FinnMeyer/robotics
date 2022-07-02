@@ -1,6 +1,35 @@
 Team:
     Name: Finn Wilhelm Meyer
     Student ID: 102084
-Description:
+Description of files:
+amcl1
+    launch 
+        start.launch -> starts the amcl localization and all need things for it e.g. lidar fusion and static tfs
+    mymap.yaml
+    mymap.pgm
+fuse
+    launch 
+        start.launch -> starts lidar fusion which is needed for amcl and gmapping, needs static tfs for it and publishes /scan_multi topic
+        which has the front and rear laser points fused together
+mapping
+    launch
+        start.launch -> starts the gmapping, defines the inputs for the gmapping node
+    src
+        odom.src -> creates the odom -> base_footprint tf for gmapping
+        
+structure of the tf tree:
+map -> odom -> base_footprint -> base_link -> laser_front/laser_rear
 
-rosrun map_server map_saver -f ../mymap
+name of the bag used to create the map and bags to test:
+    to create the map: robotics1_final.bag
+    for testing: robotics2_final.bag, robotics3_final.bag
+node used for map creation:
+    mapping1
+description of how to start/use the nodes:
+to start gmapping:
+    roslaunch mapping start.launch
+to save the map:
+    rosrun map_server map_saver -f ../mymap
+to start amcl localization:
+    roslaunch amcl1 start.launch
+info you think are important/interesting:
