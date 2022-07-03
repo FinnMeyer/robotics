@@ -5,6 +5,8 @@ Description of files:
 amcl1
     launch 
         start.launch -> starts the amcl localization and all need things for it e.g. lidar fusion and static tfs
+        start_saver.launch -> starts the map_saver which stores the map as mymap.yaml and myamap.pgm in the amcl1 folder (here)
+        this should be done close to the end of the bag to get the best map
     mymap.yaml
     mymap.pgm
 fuse
@@ -26,10 +28,17 @@ name of the bag used to create the map and bags to test:
 node used for map creation:
     mapping1
 description of how to start/use the nodes:
-to start gmapping:
+1) to start gmapping:
     roslaunch mapping start.launch
-to save the map:
-    rosrun map_server map_saver -f ../mymap
-to start amcl localization:
+2) to save the map:
+    roslaunch amcl1 start_saver.launch
+3) to start amcl localization:
     roslaunch amcl1 start.launch
+
+generall approach:
+    start mapping (see 1)) -> run robotics1_final.bag -> start map saver at the end (see 2))
+    stop everything
+    start amcl localization (see 3)) -> run other bag files -> open rviz and see the map which is published on topic /map and see the amcl /odom tf 
+    or predicted position /amcl_pose
+
 info you think are important/interesting:

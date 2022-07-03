@@ -43,5 +43,4 @@
     <param name="lasamplestep" value="0.005"/>
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>
-  <node pkg="map_server" type="map_saver" name="map_saver"  output="screen"/>
 </launch>
