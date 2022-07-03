@@ -47,3 +47,4 @@ generall approach:
     or predicted position /amcl_pose
 
 info you think are important/interesting:
+/
