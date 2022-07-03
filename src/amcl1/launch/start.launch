@@ -3,6 +3,7 @@
 <param name="/use_sim_time" value="true"/>
 <include file="$(find fuse)/launch/start.launch" />
 <node pkg="mapping" type="mapping1" name="mapping"></node>
+<node pkg="amcl1" type="amcl1" name="path"></node>
 <arg name="map_file" default="$(find amcl1)/mymap.yaml"/>
 <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
     <param name="frame_id" value="map"/>

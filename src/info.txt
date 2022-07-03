@@ -7,8 +7,12 @@ amcl1
         start.launch -> starts the amcl localization and all need things for it e.g. lidar fusion and static tfs
         start_saver.launch -> starts the map_saver which stores the map as mymap.yaml and myamap.pgm in the amcl1 folder (here)
         this should be done close to the end of the bag to get the best map
-    mymap.yaml
-    mymap.pgm
+    src 
+        path.cpp -> creates path from /amcl_pose and publishes it onto /path
+    mymap.yaml -> map i used
+    mymap.pgm -> picture of map + map that i used
+    robotics_bag_2.png -> picture of path of bag 2
+    robotics_bag_3.png -> picture of path of bag 3
 fuse
     launch 
         start.launch -> starts lidar fusion which is needed for amcl and gmapping, needs static tfs for it and publishes /scan_multi topic
@@ -17,7 +21,7 @@ mapping
     launch
         start.launch -> starts the gmapping, defines the inputs for the gmapping node
     src
-        odom.src -> creates the odom -> base_footprint tf for gmapping
+        odom.cpp -> creates the odom -> base_footprint tf for gmapping
         
 structure of the tf tree:
 map -> odom -> base_footprint -> base_link -> laser_front/laser_rear
