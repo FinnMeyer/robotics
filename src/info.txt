@@ -25,6 +25,7 @@ map -> odom -> base_footprint -> base_link -> laser_front/laser_rear
 name of the bag used to create the map and bags to test:
     to create the map: robotics1_final.bag
     for testing: robotics2_final.bag, robotics3_final.bag
+    note: --clock is needed when runing the bag files
 node used for map creation:
     mapping1
 description of how to start/use the nodes:
